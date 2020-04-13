@@ -1,6 +1,5 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import Container from '@/container/Container'
 Vue.use(VueRouter);
 
 const routes = [
