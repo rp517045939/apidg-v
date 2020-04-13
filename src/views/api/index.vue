@@ -15,6 +15,7 @@
 
 <script>
   import service from "@/api";
+  import { serializeData } from "@/utils/common";
   export default{
     name: "detail",
     data() {
@@ -26,11 +27,14 @@
     },
 
     methods: {
-      
+
     },
     created() {
       let _that = this;
-      service.list()
+      let obj = {
+        // web_token: this.$storage.sessionGet("web_token")
+      }
+      service.list(obj)
         .then(rsp => {
           if (rsp.status == 200){
             _that.msg = rsp.msg;

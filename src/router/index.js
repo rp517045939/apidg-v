@@ -13,6 +13,13 @@ const routes = [
   {
     path: "/",
     component: () => import("@/views/homepage/homepage"),
+    meta: {
+      title: "授权登陆"
+    }
+  },
+  {
+    path: "/",
+    component: () => import("@/views/homepage/homepage"),
     redirect:'/',
     children: [
 		{path: "/dashboard", name: '首页', component: () => import("@/views/dashboard/index")},
