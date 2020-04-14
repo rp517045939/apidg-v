@@ -16,7 +16,7 @@
         <el-menu-item-group>
         </el-menu-item-group>
           <el-menu-item index="2-3">选项3</el-menu-item>
-        </el-menu-item-group>
+      </el-menu-item-group>
         <el-submenu index="2-4">
           <template slot="title">选项4</template>
         </el-submenu>
@@ -49,39 +49,39 @@
 </template>
 
 <script>
-import service from "@/api";
+import service from '@/api'
 export default{
-  name: "detail",
-  data() {
+  name: 'detail',
+  data () {
     return {
-      msg: "",
-      detaillist:[],
-      username: this.$storage.localGet('username'),
-    };
+      msg: '',
+      detaillist: [],
+      username: this.$storage.localGet('username')
+    }
   },
 
   methods: {
-    api_detail(){
-      let _that = this;
+    api_detail () {
+      let _that = this
       service.list()
         .then(rsp => {
-          if (rsp.status == 200){
-            _that.msg = rsp.msg;
-            _that.detaillist = rsp.list;
-        }
-      })
-
+          // 获取msg和apilist
+          if (rsp.status === 200) {
+            _that.msg = rsp.msg
+            _that.detaillist = rsp.list
+          }
+        })
     }
   },
-  created() {
-    let _that = this;
+  created () {
+    let _that = this
     service.list()
       .then(rsp => {
-        if (rsp.status == 200){
-          _that.msg = rsp.msg;
-          _that.detaillist = rsp.list;
-      }
-    })
+        if (rsp.status === 200) {
+          _that.msg = rsp.msg
+          _that.detaillist = rsp.list
+        }
+      })
   }
 }
 
@@ -99,8 +99,8 @@ export default{
 
     }
   /*
-  	找到html标签、body标签，和挂载的标签
-  	都给他们统一设置样式
+  找到html标签、body标签，和挂载的标签
+  都给他们统一设置样式
   */
     html,body,#app,.el-container{
           /*设置内部填充为0，几个布局元素之间没有间距*/

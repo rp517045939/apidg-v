@@ -14,35 +14,36 @@
 </template>
 
 <script>
-  import service from "@/api";
-  import { serializeData } from "@/utils/common";
-  export default{
-    name: "detail",
-    data() {
-      return {
-        msg: "",
-        detaillist:[],
-        username: this.$storage.localGet('username'),
-      };
-    },
+import service from '@/api'
+// eslint-disable-next-line no-unused-vars
+import { serializeData } from '@/utils/common';
+export default{
+  name: 'detail',
+  data () {
+    return {
+      msg: '',
+      detaillist: [],
+      username: this.$storage.localGet('username')
+    }
+  },
 
-    methods: {
+  methods: {
 
-    },
-    created() {
-      let _that = this;
-      let obj = {
-        // web_token: this.$storage.sessionGet("web_token")
-      }
-      service.list(obj)
-        .then(rsp => {
-          if (rsp.status == 200){
-            _that.msg = rsp.msg;
-            _that.detaillist = rsp.list;
+  },
+  created () {
+    let _that = this
+    let obj = {
+      // web_token: this.$storage.sessionGet("web_token")
+    }
+    service.list(obj)
+      .then(rsp => {
+        if (rsp.status === 200) {
+          _that.msg = rsp.msg
+          _that.detaillist = rsp.list
         }
       })
-    }
   }
+}
 </script>
 
 <style>

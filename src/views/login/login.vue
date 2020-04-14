@@ -30,16 +30,16 @@
 </template>
 
 <script>
-import service from "@/api";
-import { serializeData } from "@/utils/common";
+import service from '@/api'
+import { serializeData } from '@/utils/common';
 export default{
-  data(){
-    return{
+  data () {
+    return {
       uid: '',
       username: '',
       token: '',
       input_username: '',
-      input_password: '',
+      input_password: ''
     }
   },
   methods: {
@@ -49,35 +49,33 @@ export default{
     // }else if(this.input_password == ""){
     //   this.$toast("请输入密码")
     // }
-    commit_login(obj) {
-      let re ={
+    commit_login (obj) {
+      let re = {
         username: this.input_username,
-        password: this.input_password,
+        password: this.input_password
+      }
+      console.log(re)
+      service.login(serializeData(re))
+        .then(res => {
+          console.log(res)
+          if (res.status === 200) {
+            // 添加用户信息到本地
+            this.$storage.sessionSet('web_token', 'JWT ' + res.token)
+            this.$storage.localSet('uid', res.uid)
+            this.$storage.sessionSet('uid', res.uid)
+            this.$storage.localSet('username', res.username)
+            this.$storage.sessionSet('username', res.username)
+            this.$router.replace({
+              path: '/'
+            })
+          } else {
+            alert.log('账号或者密码错误')
+            console.log('账号或者密码错误')
           }
-        console.log(re)
-          service.login(serializeData(re))
-          .then(res => {
-            console.log(res)
-            if(res.status == 200){
-              this.$storage.sessionSet("web_token", 'JWT '+res.token);
-              this.$storage.localSet("uid", res.uid);
-              this.$storage.sessionSet("uid", res.uid);
-              this.$storage.localSet("username", res.username)
-              this.$storage.sessionSet("username", res.username)
-              this.$router.replace({
-                path: "/"
-                        });
-            }else{
-              console.log('账号或者密码错误');
-            }
-          })
-        },
+        })
+    }
   }
 }
-
-
-
-
 </script>
 
 <style>
