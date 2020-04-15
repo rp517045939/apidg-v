@@ -3,7 +3,7 @@ import axios from 'axios'
 
 // 创建axios实例
 const service = axios.create({
-  baseURL: 'http://127.0.0.1:8000', // process.env.VUE_APP_URL, // api的base_url
+  baseURL: process.env.VUE_APP_URL, // api的base_url
   timeout: 300000 // 请求超时时间
 })
 
@@ -15,7 +15,7 @@ service.interceptors.request.use(
     return config
   },
   error => {
-    return Promise.reject(error);
+    return Promise.reject(error)
   }
 )
 

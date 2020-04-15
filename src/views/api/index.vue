@@ -16,7 +16,7 @@
 <script>
 import service from '@/api'
 // eslint-disable-next-line no-unused-vars
-import { serializeData } from '@/utils/common';
+import { serializeData } from '@/utils/common'
 export default{
   name: 'detail',
   data () {

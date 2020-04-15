@@ -31,7 +31,7 @@
 
 <script>
 import service from '@/api'
-import { serializeData } from '@/utils/common';
+import { serializeData } from '@/utils/common'
 export default{
   data () {
     return {

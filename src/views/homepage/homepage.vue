@@ -10,13 +10,11 @@
           <el-menu-item index="apilist">接口</el-menu-item>
         </el-menu-item-group>
         </el-submenu>
-      </el-submenu>
       <el-submenu index="2">
         <template slot="title"><i class="el-icon-menu"></i>导航二</template>
         <el-menu-item-group>
         </el-menu-item-group>
           <el-menu-item index="2-3">选项3</el-menu-item>
-      </el-menu-item-group>
         <el-submenu index="2-4">
           <template slot="title">选项4</template>
         </el-submenu>
